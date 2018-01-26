@@ -2,12 +2,19 @@
 #ifndef TEXTBUFFER_H
 #define TEXTBUFFER_H
 //==============================================================================
+<<<<<<< HEAD
 #include "common/config.h"
+=======
+//#include "errors/errors.h"
+#include "common/config.h"
+#include "common/common.h"
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
 #include <QTextStream>
 #include <QFile>
 #include <QDateTime>
 #include <QTextCodec>
 //==============================================================================
+<<<<<<< HEAD
 enum  StreamType {
    IOAbstractSocket  = 0x0001,   // QAbstractSocket
    IOBluetooth       = 0x0002,   // QBluetoothSocket
@@ -61,6 +68,47 @@ enum  StreamType {
 //{
 //
 //};
+=======
+// This to remake stream to read from all device(sockets. etc). TODO
+// Now we use only TTextStream
+//==============================================================================
+class IAbstractStream
+{
+   //---------------------------------------------------------------------------
+   public:
+   //---------------------------------------------------------------------------
+                        IAbstractStream(QIODevice* io)
+                           : _io(io)
+                        {
+                        }
+      virtual          ~IAbstractStream()
+                        {
+                           if(_io != Q_NULLPTR)
+                              delete _io;
+                        }
+
+   //---------------------------------------------------------------------------
+   private:
+   //---------------------------------------------------------------------------
+      QIODevice*       _io;
+};
+//==============================================================================
+class FileStream
+{
+
+};
+//==============================================================================
+class MemoryStream
+{
+
+};
+//==============================================================================
+enum  StreamType {
+   IODevice = 0x0000,
+   IOFile   = 0x0001,
+   IOMemory = 0x0002
+};
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
 //==============================================================================
 class IStream {
    //---------------------------------------------------------------------------
@@ -68,7 +116,11 @@ class IStream {
    //---------------------------------------------------------------------------
       bool              open(const QString& fileName,
                              QIODevice::OpenMode openMode);
+<<<<<<< HEAD
       //------------------------------------------------------------------------
+=======
+      //------------------------------------------------------------------------------
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
       void              init(const QString& name,
                              StreamType t)
                         {
@@ -81,15 +133,26 @@ class IStream {
    public:
    //---------------------------------------------------------------------------
                         IStream(const QString&  fileName,
+<<<<<<< HEAD
                                 QIODevice::OpenMode md = QIODevice::ReadOnly);
                         IStream(FILE * fileHandle,
                                 const QString& fileName,
                                 QIODevice::OpenMode md = QIODevice::ReadOnly);
+=======
+                                QIODevice::OpenMode openMode = QIODevice::ReadOnly);
+                        IStream(FILE * fileHandle,
+                                const QString& fileName,
+                                QIODevice::OpenMode openMode = QIODevice::ReadOnly);
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
       virtual          ~IStream();
       //------------------------------------------------------------------------
       bool              status();
       //------------------------------------------------------------------------
+<<<<<<< HEAD
       QString&          line()   { return _line;       }
+=======
+      QString&          line()   {  return _line;      }
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
       int&              lineNo() { return _lineNo;     }
       int&              pos()    { return _pos;        }
       const QString&    name()   { return _objectName; }
@@ -113,14 +176,24 @@ class TextStream : public IStream
    public:
    //---------------------------------------------------------------------------
                         TextStream(const QString&  fileName,
+<<<<<<< HEAD
                                    QIODevice::OpenMode md = QIODevice::ReadOnly)
                            : IStream(fileName, md)
+=======
+                                   QIODevice::OpenMode openMode = QIODevice::ReadOnly)
+                           : IStream(fileName, openMode)
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                         {
                         }
                         TextStream(FILE * fileHandle,
                                    const QString& fileName,
+<<<<<<< HEAD
                                    QIODevice::OpenMode md = QIODevice::ReadOnly)
                            : IStream(fileHandle, fileName, md)
+=======
+                                   QIODevice::OpenMode openMode = QIODevice::ReadOnly)
+                           : IStream(fileHandle, fileName, openMode)
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                         {
                         }
       //------------------------------------------------------------------------
@@ -153,6 +226,7 @@ class TTextInBuffer : public TextStream
 {
    public:
       //------------------------------------------------------------------------
+<<<<<<< HEAD
                         TTextInBuffer(
                               const QString& fileName,
                               QIODevice::OpenMode md = QIODevice::ReadOnly)
@@ -165,6 +239,18 @@ class TTextInBuffer : public TextStream
                               const QString& name = "Unknown file name",
                               QIODevice::OpenMode md = QIODevice::ReadOnly)
                           : TextStream(fileHandle, name, md)
+=======
+                        TTextInBuffer(const QString& fileName,
+                                      QIODevice::OpenMode openMode = QIODevice::ReadOnly)
+                           : TextStream(fileName, openMode)
+                        {
+                        }
+      //------------------------------------------------------------------------
+                        TTextInBuffer(FILE * fileHandle,
+                                      const QString& fileName = "Unknown file name",
+                                      QIODevice::OpenMode openMode = QIODevice::ReadOnly)
+                          : TextStream(fileHandle, fileName, openMode)
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                         {
                         }
       //------------------------------------------------------------------------
@@ -187,8 +273,13 @@ class TTextOutBuffer : public TextStream
                         {
                         }
                         TTextOutBuffer(FILE * fileHandle,
+<<<<<<< HEAD
                                        const QString& nm = "Unknown file name")
                            : TextStream(fileHandle, nm, QIODevice::WriteOnly)
+=======
+                                       const QString& fileName = "Unknown file name")
+                           : TextStream(fileHandle, fileName, QIODevice::WriteOnly)
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                            , _pageNo(0)
                            , _lineCount(0)
                            , _maxLinesPerPage(getMaxLinesPerPage())

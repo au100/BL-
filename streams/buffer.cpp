@@ -2,8 +2,11 @@
 #include "streams/buffer.h"
 #include "errors/errors.h"
 #include "errors/errmsg.h"
+<<<<<<< HEAD
 #include "common/config.h"
 #include "common/common.h"
+=======
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
 //==============================================================================
 bool IStream::open(const QString&  fileName,
                    QIODevice::OpenMode openMode)
@@ -40,9 +43,14 @@ IStream::IStream(FILE * fileHandle,
                  const QString& fileName,
                  QIODevice::OpenMode openMode)
 {
+<<<<<<< HEAD
     Q_UNUSED(openMode);
    _stream = new QTextStream(fileHandle);
    init(fileName, IOFile);
+=======
+   _stream = new QTextStream(fileHandle);
+   init(fileName, IODevice);
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
 }
 //------------------------------------------------------------------------------
 IStream::~IStream()

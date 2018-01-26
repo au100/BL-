@@ -6,6 +6,106 @@
 #include <QString>
 #include <vector>
 //-----------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+// class MemPtr
+//-----------------------------------------------------------------------------
+const size_t IncreaseSize = 256;
+//-----------------------------------------------------------------------------
+template <class T>
+class MemPtr
+{
+   public:
+               MemPtr()
+                  : _data(NULL)
+                  , _size(0)
+                  , _bufferSize(0)
+               {
+                  resize(IncreaseSize);
+               }
+               MemPtr(const MemPtr& copyMem)
+                  : _data(NULL)
+                  , _size(0)
+                  , _bufferSize(0)
+               {
+                  copyFrom(copyMem);
+               }
+               MemPtr(size_t newSize)
+                  : _data(NULL)
+                  , _size(0)
+                  , _bufferSize(0)
+               {
+                  resize(newSize);
+               }
+      virtual ~MemPtr()
+               {
+                  if (_data != NULL)
+                     delete[] _data;
+               }
+      T&			operator[](int idx)
+               {
+                  return _data[idx];
+               }
+      MemPtr&  clone(const QString& str)
+               {
+                  resize(str.size() + 1);
+                  _size = str.size() + 1;
+                  memcpy(data(), (const void*)str.data(), _size);
+                  return *this;
+               }
+      MemPtr&  clone(const MemPtr& copyMem)
+               {
+                  resize(copyMem._bufferSize);
+                  _size = copyMem._size;
+                  memcpy(data(), (const void*)copyMem.data(), copyMem.sizeInBytes());
+                  return *this;
+               }
+      MemPtr&  add(const T& element)
+               {
+                  if (_size == _bufferSize)
+                     resize(_size + IncreaseSize);
+                  _data[_size++] = element;
+                  return *this;
+               }
+      void*		data() const
+               {
+                  return (void*)_data;
+               }
+      size_t   sizeInBytes() const
+               {
+                  return sizeof(T) * _size;
+               }
+      MemPtr&  resize(size_t newSize)
+               {
+                  if (newSize > _bufferSize)
+                  {
+                     T* newData = NULL;
+                     newData = new T[newSize];
+                     if (_data != NULL)
+                     {
+                        memcpy(newData, _data, sizeInBytes());
+                        delete[] _data;
+                     }
+                     _bufferSize = newSize;
+                     _data = newData;
+                  }
+                  return *this;
+               }
+      size_t   size()
+               {
+                  return _size;
+               }
+      int      elementSize()
+               {
+                  return sizeof(T);
+               }
+   private:
+      T*       _data;
+      size_t   _size;
+      size_t   _bufferSize;
+};
+//-----------------------------------------------------------------------------
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
 template <class T> class Singleton
 {
    private:

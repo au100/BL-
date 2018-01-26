@@ -46,8 +46,11 @@ template<class T> class TMemPtr
                         }
       T*                operator =(T* _pointer)
                         {
+<<<<<<< HEAD
                            if(pointer != Q_NULLPTR)
                                delete pointer;
+=======
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                            return pointer = _pointer;
                         }
       T&                operator [](int i)
@@ -58,9 +61,15 @@ template<class T> class TMemPtr
                         {
                            return pointer == Q_NULLPTR;
                         }
+<<<<<<< HEAD
       T&                get()
                         {
                            return *pointer;
+=======
+      T*                get()
+                        {
+                           return pointer;
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                         }
       void              reset(T* _pointer = Q_NULLPTR)
                         {
@@ -71,7 +80,11 @@ template<class T> class TMemPtr
       T*                release()
                         {
                            T* tmp = pointer;
+<<<<<<< HEAD
                            pointer = Q_NULLPTR;
+=======
+                           pointer = 0;
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                            return tmp;
                         }
 };
@@ -88,6 +101,7 @@ class TClassPtr : public TMemPtr<T>
                         {
                         }
 };
+<<<<<<< HEAD
 //-----------------------------------------------------------------------------
 // class MemPtr
 //-----------------------------------------------------------------------------
@@ -186,6 +200,8 @@ public:
                return _instance;
             }
 };
+=======
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
 //==============================================================================
 template<class T>
 class BackupValue

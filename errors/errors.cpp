@@ -1,8 +1,12 @@
 //==============================================================================
+<<<<<<< HEAD
 #include <QtGlobal>
 #include <QSettings>
 #include "errors.h"
 #include "errmsg.h"
+=======
+#include "errors.h"
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
 #include "common/common.h"
 #include <iostream>
 #include <QTextCodec>
@@ -120,8 +124,12 @@ class TError {
                                  error->setCodec(name);
                                  info->setCodec(name);
                                  debug->setCodec(name);
+<<<<<<< HEAD
                                  if(log != Q_NULLPTR)
                                     log ->setCodec(name);
+=======
+                                 log ->setCodec(name);
+>>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                               }
                               return true;
                            }
