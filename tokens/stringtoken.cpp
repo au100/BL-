@@ -29,11 +29,7 @@ bool getHexCode(TTextInBuffer& in, QChar& c)
 QString& TStringToken::get(TTextInBuffer& in)
 {
    bool endString = false;
-<<<<<<< HEAD
    QChar ch       = initParse(in);
-=======
-   QChar      ch = initParse(in);
->>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
    while(endString == false)
    {
       if(charCode(ch) == ccQuote)

@@ -8,11 +8,8 @@ QT       += core
 
 QT       -= gui
 
-<<<<<<< HEAD
 TARGET = blc
-=======
-TARGET = prolog
->>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
+
 CONFIG   += console
 CONFIG   -= app_bundle
 

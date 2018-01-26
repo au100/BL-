@@ -104,7 +104,6 @@ class TErrorMsg : public QObject
                            {
                               if(language != Q_NULLPTR)
                                  delete language;
-<<<<<<< HEAD
                               QString path =
                                       qApp->applicationDirPath() +
                                       "/messages/errors/message." +
@@ -116,13 +115,6 @@ class TErrorMsg : public QObject
 //                                          QSettings::IniFormat);
                               language = new QSettings(path,
                                                        QSettings::IniFormat);
-=======
-                              language = new QSettings(
-                                          qApp->applicationDirPath() +
-                                          "/messages/errors/message." +
-                                          lang,
-                                          QSettings::IniFormat);
->>>>>>> dbdcb0220f45a6115fa7329f944f5e8540a18a52
                               language->setIniCodec("UTF-8");
                               return language;
                            }
