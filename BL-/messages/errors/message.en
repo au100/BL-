@@ -1,0 +1,6 @@
+[codec]
+LINUX=UTF8
+WINDOWS=IBM866
+[messages]
+FILE_NOT_EXIST="File %1 not found"
+FILE_OPEN_FAILED="Error opening file %1"
