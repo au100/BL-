@@ -22,45 +22,45 @@ enum  StreamType {
 // This to remake stream to read from all device(sockets. etc). TODO
 // Now we use only TTextStream
 //==============================================================================
-class IAbstractStream
-{
+//class IAbstractStream
+//{
    //---------------------------------------------------------------------------
-   public:
+//   public:
    //---------------------------------------------------------------------------
-                        IAbstractStream(QIODevice* io,
-                                        StreamType tp = IOFile)
-                           : _io(io),
-                             _type(tp)
-                        {
-                        }
-      virtual          ~IAbstractStream()
-                        {
-                           if(_io != Q_NULLPTR)
-                              delete _io;
-                        }
-      StreamType        streamType()
-                        {
-                           return _type;
-                        }
-      QIODevice&        device()
-                        {
-                           return *_io;
-                        }
+//                        IAbstractStream(QIODevice* io,
+//                                        StreamType tp = IOFile)
+//                           : _io(io),
+//                             _type(tp)
+//                        {
+//                        }
+//      virtual          ~IAbstractStream()
+//                        {
+//                           if(_io != Q_NULLPTR)
+//                              delete _io;
+//                        }
+//      StreamType        type()
+//                        {
+//                           return _type;
+//                        }
+//      QIODevice&        device()
+//                        {
+//                           return *_io;
+//                        }
    //---------------------------------------------------------------------------
-   private:
-      QIODevice*       _io;
-      StreamType       _type;
-};
+//   private:
+//      QIODevice*       _io;
+//      StreamType       _type;
+//};
 //==============================================================================
-class FileStream
-{
-
-};
+//class FileStream
+//{
+//
+//};
 //==============================================================================
-class MemoryStream
-{
-
-};
+//class MemoryStream
+//{
+//
+//};
 //==============================================================================
 class IStream {
    //---------------------------------------------------------------------------
